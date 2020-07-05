@@ -63,7 +63,7 @@ public class Rocket : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(30, 0, 200, 200), "Fuel: " + Convert.ToInt32(fuel).ToString() + state);
+        GUI.Label(new Rect(30, 0, 200, 200), "Fuel: " + Convert.ToInt32(fuel).ToString());
     }
 
     void OnCollisionEnter(Collision collision)
@@ -109,6 +109,7 @@ public class Rocket : MonoBehaviour
     {
         if (fuel < 1)
         {
+            fuel = 0; //set fuel to 0 to avoid becoming negative value (will affect GUI as well)
             mainThrust = 0f;
             mainEngineParticles.Stop();
         }

@@ -64,6 +64,7 @@ public class Rocket : MonoBehaviour
     void OnGUI()
     {
         GUI.Label(new Rect(30, 0, 200, 200), "Fuel: " + Convert.ToInt32(fuel).ToString());
+        GUI.Label(new Rect(230, 0, 400, 400), "Controls: A - Rotate Left | D - Rotate Right | Spacebar - Boost");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -87,22 +88,38 @@ public class Rocket : MonoBehaviour
                 break;
             default:
                 DeathSequence();
-                Invoke("LoadNextScene", levelLoadDelay);
+                //Invoke("LoadNextScene", levelLoadDelay);
                 break;
         }
     }
 
     private void LoadNextScene()//allow for more than 2 levels
     {
-        if (state == State.Transcending)
+        //if (state == State.Transcending)
+        //{
+        //    SceneManager.LoadScene(1);
+        //}
+        //else if (state == State.Dying)
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int noOfLevels = SceneManager.sceneCountInBuildSettings;
+        int nextSceneIndex = currentScene + 1;
+
+        if (nextSceneIndex == noOfLevels)
         {
-            SceneManager.LoadScene(1);
-        }
-        else if (state == State.Dying)
-        {
-            SceneManager.LoadScene(0);
-        }
+            nextSceneIndex = 0;
+        } 
+
+        SceneManager.LoadScene(nextSceneIndex);
         
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void EmptyFuel()
@@ -154,6 +171,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(deathSound);
         deathParticles.Play();
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void Rotate()

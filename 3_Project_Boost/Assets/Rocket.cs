@@ -111,7 +111,7 @@ public class Rocket : MonoBehaviour
         if (nextSceneIndex == noOfLevels)
         {
             nextSceneIndex = 0;
-        } 
+        }
 
         SceneManager.LoadScene(nextSceneIndex);
         

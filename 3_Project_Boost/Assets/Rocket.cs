@@ -33,9 +33,6 @@ public class Rocket : MonoBehaviour
 
     bool collisionDisabled = false;
 
-    //bool m_play;
-    //bool m_ToggleChange;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -121,6 +118,12 @@ public class Rocket : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    // Invoked at deathSequence() to restart level when death occurs
+    private void RestartLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
+    }
 
     void EmptyFuel()
     {
@@ -171,7 +174,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(deathSound);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        Invoke("RestartLevel", levelLoadDelay);
     }
 
     private void Rotate()

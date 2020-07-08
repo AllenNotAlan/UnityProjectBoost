@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] float mainThrust = 2000f;
     [SerializeField] float levelLoadDelay = 2f;
     [SerializeField] float fuel = 100f;
-    [SerializeField] float fuelConsumptionRate = 0.2f;
+    [SerializeField] float fuelConsumptionRate = 0.1f;
 
     //IMPORTANT ADD TO DOCS!
     [SerializeField] AudioClip mainEngine;
@@ -27,7 +28,7 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
-
+    public Healthbar healthBar;
     enum State { Alive, Dying, Transcending, Debug }
     State state = State.Alive;
 
@@ -36,6 +37,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBar.SetMaxHealth(fuel);
         rigidBody = GetComponent<Rigidbody>(); //this gives us access to the rigidbody in unity
         audioSource = GetComponent<AudioSource>();
     }
@@ -92,14 +94,6 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextScene()//allow for more than 2 levels
     {
-        //if (state == State.Transcending)
-        //{
-        //    SceneManager.LoadScene(1);
-        //}
-        //else if (state == State.Dying)
-        //{
-        //    SceneManager.LoadScene(0);
-        //}
 
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int noOfLevels = SceneManager.sceneCountInBuildSettings;
@@ -140,6 +134,7 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             ApplyThrust();
+            UseFuel(fuelConsumptionRate);
         }
         else
         {
@@ -151,6 +146,7 @@ public class Rocket : MonoBehaviour
     private void ApplyThrust()
     {
         fuel -= fuelConsumptionRate;
+        healthBar.SetHealth(fuel);
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime); //.up applies to the y-axis. 
         if (!audioSource.isPlaying) //so audio doesn't layer (play multiple times at the same time)
         {
@@ -158,6 +154,12 @@ public class Rocket : MonoBehaviour
             mainEngineParticles.Play();
         }
         
+    }
+
+    private void UseFuel(float fuelConsumptionRate)
+    {
+        fuel -= fuelConsumptionRate;
+        healthBar.SetHealth(fuel);
     }
 
     private void SuccessSequence()

@@ -28,7 +28,7 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
-    public Healthbar healthBar;
+    public FuelBar fuelBar;
     enum State { Alive, Dying, Transcending, Debug }
     State state = State.Alive;
 
@@ -37,7 +37,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthBar.SetMaxHealth(fuel);
+        fuelBar.SetMaxFuel(fuel);
         rigidBody = GetComponent<Rigidbody>(); //this gives us access to the rigidbody in unity
         audioSource = GetComponent<AudioSource>();
     }
@@ -146,7 +146,7 @@ public class Rocket : MonoBehaviour
     private void ApplyThrust()
     {
         fuel -= fuelConsumptionRate;
-        healthBar.SetHealth(fuel);
+        fuelBar.SetFuel(fuel);
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime); //.up applies to the y-axis. 
         if (!audioSource.isPlaying) //so audio doesn't layer (play multiple times at the same time)
         {
@@ -159,7 +159,7 @@ public class Rocket : MonoBehaviour
     private void UseFuel(float fuelConsumptionRate)
     {
         fuel -= fuelConsumptionRate;
-        healthBar.SetHealth(fuel);
+        fuelBar.SetFuel(fuel);
     }
 
     private void SuccessSequence()

@@ -9,6 +9,6 @@ Features to be added:
 
 - Fuel is only affected by the main thruster, but a new build also has rotating movement affecting fuel consumption. Still under consideration.
 - Warning light/sound when fuel is low
-- Fuel bar instead of text
+- Fuel bar instead of text (Feature added but UI needs better design)
 - Considering adding a timer to make the game more challenging. (may add to future level additions)
 - Available levels were designed for testing, not final design. More will be added.

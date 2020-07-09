@@ -12,3 +12,6 @@ Features to be added:
 - Fuel bar instead of text (Feature added but UI needs better design)
 - Considering adding a timer to make the game more challenging. (may add to future level additions)
 - Available levels were designed for testing, not final design. More will be added.
+
+![Project Boost Screenshot](https://github.com/AllenNotAlan/UnityProjectBoost/blob/master/3_Project_Boost/Screenshots/projectBoostFuelBar.PNG)
+- Fuel Bar feature added

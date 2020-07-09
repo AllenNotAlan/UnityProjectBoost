@@ -29,6 +29,7 @@ public class Rocket : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource audioSource;
     public FuelBar fuelBar;
+
     enum State { Alive, Dying, Transcending, Debug }
     State state = State.Alive;
 
@@ -62,7 +63,6 @@ public class Rocket : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(30, 0, 200, 200), "Fuel: " + Convert.ToInt32(fuel).ToString());
         GUI.Label(new Rect(230, 0, 400, 400), "Controls: A - Rotate Left | D - Rotate Right | Spacebar - Boost");
     }
 

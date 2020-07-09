@@ -29,6 +29,7 @@ public class Rocket : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource audioSource;
     public FuelBar fuelBar;
+    //public RectTransform panelRectTransform;
 
     enum State { Alive, Dying, Transcending, Debug }
     State state = State.Alive;
@@ -41,6 +42,10 @@ public class Rocket : MonoBehaviour
         fuelBar.SetMaxFuel(fuel);
         rigidBody = GetComponent<Rigidbody>(); //this gives us access to the rigidbody in unity
         audioSource = GetComponent<AudioSource>();
+
+        //panelRectTransform.anchorMin = new Vector2(1, 0);
+        //panelRectTransform.anchorMax = new Vector2(0, 1);
+        //panelRectTransform.pivot = new Vector2(0.5f, 0.5f);
     }
 
     // Update is called once per frame

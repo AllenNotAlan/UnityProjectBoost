@@ -1,7 +1,7 @@
 # UnityProjectBoost
 2.5D Rocket Boost game built using the Unity Game Engine
 
-Latest build:
+#Play the latest build at:
 https://simmer.io/@Allen_Loyola/project-boost-build-3
 
 The objective is to pilot the rocket ship to the platform without colliding with objects and before your fuel runs out.

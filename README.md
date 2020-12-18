@@ -8,12 +8,13 @@ The objective is to pilot the rocket ship to the platform without colliding with
 ![Project Boost Screenshot](https://github.com/AllenNotAlan/UnityProjectBoost/blob/master/3_Project_Boost/Screenshots/projectBoost2crop.png)
 
 
-Features to be added:
+Some notes:
 
 - Fuel is only affected by the main thruster, but a new build also has rotating movement affecting fuel consumption. Still under consideration.
-- Warning light/sound when fuel is low
-- Considering adding a timer to make the game more challenging. (may add to future level additions)
-- Available levels were designed for testing, not final design. More will be added.
+- Warning light/sound when fuel is low will also be added soon.
+- Considering adding a timer to make the game more challenging. (May add to some levels).
+- Available levels were designed for testing and not the final design. 
 
+Newest feature addition (18/12/20):
 ![Project Boost Screenshot](https://github.com/AllenNotAlan/UnityProjectBoost/blob/master/3_Project_Boost/Screenshots/projectBoostFuelBar.PNG)
 - Fuel text indicator replaced by fuel bar.

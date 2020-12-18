@@ -16,5 +16,6 @@ Some notes:
 - Available levels were designed for testing and not the final design. 
 
 Newest feature addition (18/12/20):
+
 ![Project Boost Screenshot](https://github.com/AllenNotAlan/UnityProjectBoost/blob/master/3_Project_Boost/Screenshots/projectBoostFuelBar.PNG)
 - Fuel text indicator replaced by fuel bar.
